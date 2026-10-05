@@ -1,0 +1,17 @@
+<!ENTITY lt     "&#38;#60;">
+<!ENTITY gt     "&#62;">
+<!ENTITY amp    "&#38;#38;">
+<!ENTITY apos   "&#39;">
+<!ENTITY quot   "&#34;">
+
+    [28]   	doctypedecl	   ::=   	'<!DOCTYPE' S Name (S ExternalID)? S? ('[' intSubset ']' S?)? '>'	[VC: Root Element Type]
+    [WFC: External Subset]
+    [28a]   	DeclSep	   ::=   	PEReference | S	[WFC: PE Between Declarations]
+    [28b]   	intSubset	   ::=   	(markupdecl | DeclSep)*
+    [29]   	markupdecl	   ::=   	elementdecl | AttlistDecl | EntityDecl | NotationDecl | PI | Comment	[VC: Proper Declaration/PE Nesting]
+    [WFC: PEs in Internal Subset]
+    [61]   	conditionalSect	   ::=   	includeSect | ignoreSect
+    [62]   	includeSect	   ::=   	'<![' S? 'INCLUDE' S? '[' extSubsetDecl ']]>'	[VC: Proper Conditional Section/PE Nesting]
+    [63]   	ignoreSect	   ::=   	'<![' S? 'IGNORE' S? '[' ignoreSectContents* ']]>'	[VC: Proper Conditional Section/PE Nesting]
+    [64]   	ignoreSectContents	   ::=   	Ignore ('<![' ignoreSectContents ']]>' Ignore)*
+    [65]   	Ignore	   ::=   	Char* - (Char* ('<![' | ']]>') Char*)
